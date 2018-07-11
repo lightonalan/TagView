@@ -12,6 +12,7 @@ import java.lang.Math.abs
 
 interface TagEditTextReaction {
     fun removeTag(user: TagUser)
+    fun tagAdded(tagView: TagEditText)
 }
 /**
  * Created by hieunx on 7/10/18.
@@ -23,7 +24,7 @@ class TagEditText : RelativeLayout {
     var maxOverlapSize = 0
     var tags: ArrayList<TagEditText> = ArrayList<TagEditText>()
     var overlapTags: ArrayList<TagEditText> = ArrayList<TagEditText>()
-    var reaction: TagEditTextReaction? = null
+    var delegate: TagEditTextReaction? = null
     constructor(context: Context) : this(context, null)
     constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, 0)
     constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
@@ -115,8 +116,8 @@ class TagEditText : RelativeLayout {
             displayRemoveIcon()
         } else {
             if (x >= width * 2 / 3){
-                if (reaction != null){
-                    reaction!!.removeTag(this!!.tagUser!!)
+                if (delegate != null){
+                    delegate!!.removeTag(this!!.tagUser!!)
                 }
             }else{
                 hideRemoveIcon()
@@ -167,6 +168,9 @@ class TagEditText : RelativeLayout {
             }
             //maxOverlapSize to keep arrow not move out of the tagview
             maxOverlapSize = w/2 - 50
+            if (delegate != null){
+                delegate!!.tagAdded(this)
+            }
         }
     }
 
