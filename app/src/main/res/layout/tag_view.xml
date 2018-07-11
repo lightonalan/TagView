@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    tools:context="com.example.hieunx.tagview.MainActivity">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical"
+        android:id="@+id/tag_view">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/bordered_rectangle_rounded_corners"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/tag_text"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:text="タグを付ける"
+                android:textColor="#ffffff"
+                android:textSize="10sp"
+                android:minWidth="25dp"
+                android:layout_marginLeft="5px"/>
+            <ImageButton
+                android:id="@+id/tag_close"
+                android:src="@drawable/f_posting_btn_tagging_cancel"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_marginLeft="10px"
+                android:layout_marginTop="2dp"/>
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/tag_arrow"
+            android:src="@drawable/triangle_down"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"/>
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
